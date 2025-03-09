@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // אתחול פאנל ניהול ופאנלים צדדיים
     initializeAdminAndSidePanels();
     
+    // Mobile Responsiveness Enhancements
+    enhanceMobileExperience();
+    
     console.log('אתחול האתר הסתיים בהצלחה');
 });
 
@@ -1258,6 +1261,96 @@ function customConfirm(options = {}) {
         }
     });
 }
+
+// Mobile Responsiveness Enhancements
+function enhanceMobileExperience() {
+    const isMobile = window.innerWidth <= 768;
+    
+    // Fix for hover states on touch devices
+    if ('ontouchstart' in window || navigator.maxTouchPoints) {
+        document.body.classList.add('touch-device');
+        
+        // Convert certain hover effects to click/touch events on mobile
+        const hoverElements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card');
+        
+        hoverElements.forEach(element => {
+            element.addEventListener('touchstart', function() {
+                const activeElement = document.querySelector('.touch-active');
+                
+                if (activeElement && activeElement !== this) {
+                    activeElement.classList.remove('touch-active');
+                }
+                
+                this.classList.toggle('touch-active');
+            }, { passive: true });
+        });
+    }
+    
+    // Adjust side panels behavior on mobile
+    if (isMobile) {
+        const sidePanels = document.querySelectorAll('.side-panel');
+        const panelCloseBtns = document.querySelectorAll('.side-panel-close');
+        
+        // Close panels when clicking outside
+        document.addEventListener('click', function(event) {
+            sidePanels.forEach(panel => {
+                if (panel.classList.contains('active') && 
+                    !panel.contains(event.target) && 
+                    !event.target.closest('.admin-bubble') && 
+                    !event.target.closest('[data-panel]')) {
+                    panel.classList.remove('active');
+                }
+            });
+        });
+        
+        // Add tap to close for panel buttons
+        panelCloseBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const panel = this.closest('.side-panel');
+                if (panel) {
+                    panel.classList.remove('active');
+                }
+            });
+        });
+    }
+    
+    // Fix for 100vh issue on mobile browsers
+    const setVhProperty = () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    
+    setVhProperty();
+    window.addEventListener('resize', setVhProperty);
+    
+    // Fix for fixed elements when keyboard appears on mobile
+    const inputs = document.querySelectorAll('input, textarea');
+    
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            if (isMobile) {
+                document.body.classList.add('keyboard-open');
+            }
+        });
+        
+        input.addEventListener('blur', () => {
+            document.body.classList.remove('keyboard-open');
+        });
+    });
+}
+
+// Initialize mobile enhancements
+document.addEventListener('DOMContentLoaded', function() {
+    enhanceMobileExperience();
+    
+    // Reinitialize on resize to handle orientation changes
+    window.addEventListener('resize', function() {
+        if (this.resizeTimer) clearTimeout(this.resizeTimer);
+        this.resizeTimer = setTimeout(function() {
+            enhanceMobileExperience();
+        }, 500);
+    });
+});
 
 // העמדת פונקציות גלובליות לשימוש קבצים אחרים
 window.isMobileDevice = isMobileDevice;

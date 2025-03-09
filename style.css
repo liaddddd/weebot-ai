@@ -70,6 +70,7 @@
     --transition: all 0.3s ease;
     --transition-slow: all 0.5s ease;
     --transition-fast: all 0.2s ease;
+    --vh: 1vh;
 }
 
 /*--------------------------------------------------------------
@@ -5266,5 +5267,492 @@ body.admin-logged-in .admin-dashboard {
     30% {
         transform: translateY(-4px);
         opacity: 1;
+    }
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .hero-content {
+        padding: 80px 0;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .hero-section {
+        flex-direction: column;
+    }
+    
+    .hero-content, .hero-visual {
+        width: 100%;
+    }
+    
+    .hero-visual {
+        margin-top: 40px;
+        max-width: 100%;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .hero-stats {
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-info, .contact-form-container {
+        width: 100%;
+    }
+    
+    .contact-form-container {
+        margin-top: 30px;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonial-card {
+        padding: 15px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-bottom-links {
+        margin-top: 15px;
+    }
+    
+    .chat-container {
+        width: 100%;
+        max-width: 100%;
+        height: 85vh;
+        border-radius: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-container {
+        padding: 0;
+    }
+    
+    .navbar {
+        padding: 8px 10px;
+    }
+    
+    .logo-text {
+        font-size: 1.2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-buttons .primary-button,
+    .hero-buttons .outline-button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .hero-badges {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .badge {
+        margin: 5px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .section-description {
+        font-size: 0.9rem;
+    }
+    
+    .service-card {
+        padding: 15px;
+    }
+    
+    .service-title {
+        font-size: 1.2rem;
+    }
+    
+    .service-description {
+        font-size: 0.9rem;
+    }
+    
+    .form-group {
+        width: 100%;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .side-panel {
+        width: 100%;
+    }
+    
+    .admin-dashboard {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .chat-button {
+        right: 15px;
+        bottom: 15px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .back-to-top {
+        right: 15px;
+        bottom: 80px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo-text {
+        display: none;
+    }
+    
+    .logo-icon-container {
+        margin-right: 0;
+    }
+    
+    .navbar-right {
+        gap: 10px;
+    }
+    
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .admin-bubble {
+        width: 40px;
+        height: 40px;
+        left: 10px;
+        bottom: 10px;
+    }
+    
+    .stat-item {
+        padding: 10px;
+    }
+    
+    .stat-value {
+        font-size: 1.2rem;
+    }
+    
+    .user-avatar {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .auth-button, .login-button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Fix for Side Panels on Mobile */
+@media (max-width: 576px) {
+    .side-panel {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .side-panel-left {
+        left: -100%;
+    }
+    
+    .side-panel-right {
+        right: -100%;
+    }
+    
+    .side-panel.active {
+        transform: translateX(0);
+    }
+}
+
+/* Improved Touch Targets for Mobile */
+@media (max-width: 768px) {
+    .nav-link, 
+    .user-menu-item,
+    .footer-menu a,
+    .social-link,
+    .portfolio-btn,
+    .filter-btn {
+        padding: 12px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    button, 
+    input[type="button"], 
+    input[type="submit"] {
+        min-height: 44px;
+    }
+    
+    .chat-input-container {
+        padding: 10px;
+    }
+    
+    .chat-input {
+        padding: 10px 0;
+    }
+    
+    .chat-send-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Fix for Font Sizes in Mobile Views */
+@media (max-width: 576px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    h3 {
+        font-size: 1.4rem;
+    }
+    
+    h4 {
+        font-size: 1.2rem;
+    }
+    
+    p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* Optimize Images for Mobile */
+@media (max-width: 768px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .portfolio-image img {
+        height: auto;
+    }
+    
+    .author-image {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Touch Device Enhancements */
+.touch-device {
+    /* Prevent unwanted hover effects on touch devices */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Use CSS variable for vh to fix mobile browser viewport issues */
+:root {
+    --vh: 1vh;
+}
+
+/* Apply variable height to elements that need full height */
+.full-height {
+    height: 100vh; /* Fallback */
+    height: calc(var(--vh, 1vh) * 100);
+}
+
+.chat-container.active {
+    height: 85vh; /* Fallback */
+    height: calc(var(--vh, 1vh) * 85);
+}
+
+/* Fix for mobile keyboards */
+body.keyboard-open .chat-button,
+body.keyboard-open .back-to-top,
+body.keyboard-open .admin-bubble {
+    display: none;
+}
+
+body.keyboard-open .chat-container.active {
+    height: 50vh; /* Smaller height when keyboard is visible */
+    height: calc(var(--vh, 1vh) * 50);
+}
+
+/* Touch active state for interactive elements (instead of hover) */
+.touch-device .service-card.touch-active,
+.touch-device .portfolio-item.touch-active,
+.touch-device .testimonial-card.touch-active {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.touch-device .service-card.touch-active .service-icon,
+.touch-device .portfolio-item.touch-active .portfolio-overlay,
+.touch-device .testimonial-card.touch-active .quote-icon {
+    transform: scale(1.1);
+}
+
+.touch-device .portfolio-item.touch-active .portfolio-overlay {
+    opacity: 1;
+}
+
+.touch-device .portfolio-item.touch-active .portfolio-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Improved mobile scrolling */
+@media (max-width: 768px) {
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .chat-interface-body,
+    .side-panel-content,
+    .modal-body {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Adjust fixed positioning for mobile */
+    .navbar-container {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    /* Prevent modal scrolling issues */
+    body.modal-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* RTL Specific Mobile Fixes */
+@media (max-width: 768px) {
+    [dir="rtl"] .hero-badges,
+    [dir="rtl"] .hero-buttons,
+    [dir="rtl"] .contact-method,
+    [dir="rtl"] .social-links,
+    [dir="rtl"] .footer-menu {
+        padding-right: 0;
+    }
+    
+    [dir="rtl"] .portfolio-item .portfolio-btn:nth-child(2) {
+        margin-right: 5px;
     }
 }
