@@ -808,72 +808,138 @@ function initializeAdminAndSidePanels() {
  * אתחול פאנלים צדדיים
  */
 function initializeSidePanels() {
-    const existingNotificationsPanel = document.getElementById('notificationsPanel');
+    console.log("אתחול פאנלים צדדיים חדש...");
+    
+    // נבדוק אם קיים כבר פאנל ימני של סושיאל ולא ניצור חדש אם הוא כבר קיים
     const existingSocialPanel = document.getElementById('socialLinksPanel');
-    
-    // Remove existing panels if they exist to avoid duplicates
-    if (existingNotificationsPanel) {
-        existingNotificationsPanel.remove();
-    }
-    
     if (existingSocialPanel) {
-        existingSocialPanel.remove();
+        console.log("פאנל סושיאל קיים כבר, לא יוצר חדש");
+        return; // לא נמשיך אם כבר יש פאנל ימני
     }
     
-    // Create notifications panel
+    // הסרת פאנלים קודמים אם קיימים
+    document.querySelectorAll('.side-panel').forEach(panel => panel.remove());
+    
+    // יצירת הפאנל השמאלי - עדכונים ואירועים
     const leftPanel = document.createElement('div');
-    leftPanel.className = 'side-panel side-panel-left';
-    leftPanel.id = 'notificationsPanel';
+    leftPanel.className = 'side-panel side-panel-left always-open';
     
-    // Rest of side panel initialization code...
+    // הוספת נקודות אור לפאנל
+    leftPanel.innerHTML = `
+        <span class="light-dot"></span>
+        <span class="light-dot"></span>
+        <span class="light-dot"></span>
+        <span class="light-dot"></span>
+        <div class="side-panel-header">
+            <h3 class="side-panel-title">עדכונים ואירועים</h3>
+        </div>
+        <div class="side-panel-content">
+            <div class="notifications-list">
+                <!-- התראות ייטענו דינמית -->
+                <div class="empty-state">
+                    <i class="fas fa-bell-slash"></i>
+                    <p>אין התראות חדשות</p>
+                </div>
+            </div>
+        </div>
+    `;
     
-    // Ensure panels are not visible by default
-    const sidePanels = document.querySelectorAll('.side-panel');
-    sidePanels.forEach(panel => {
-        panel.classList.remove('active');
-    });
+    // יצירת הפאנל הימני - רשתות חברתיות ומידע
+    const rightPanel = document.createElement('div');
+    rightPanel.className = 'side-panel side-panel-right always-open';
+    rightPanel.id = 'socialLinksPanel';
     
-    // Toggle panel visibility
-    const panelTriggers = document.querySelectorAll('[data-panel]');
-    panelTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetPanelId = this.getAttribute('data-panel');
-            const targetPanel = document.getElementById(targetPanelId);
+    // הוספת נקודות אור לפאנל
+    rightPanel.innerHTML = `
+        <span class="light-dot"></span>
+        <span class="light-dot"></span>
+        <span class="light-dot"></span>
+        <span class="light-dot"></span>
+        <div class="side-panel-header">
+            <h3 class="side-panel-title"><i class="fas fa-share-alt"></i> עקבו אחרינו</h3>
+        </div>
+        <div class="side-panel-content">
+            <div class="about-site-info">
+                <div class="site-logo-container">
+                    <i class="fas fa-atom logo-icon-small"></i>
+                    <span class="site-name">קוונטום טק</span>
+                </div>
+                <p class="site-description">
+                    אנו מספקים פתרונות טכנולוגיים מתקדמים לעסקים קטנים ובינוניים ברחבי ישראל. עקבו אחרינו ברשתות החברתיות לעדכונים ותוכן בלעדי.
+                </p>
+            </div>
             
-            // Close all panels first
-            sidePanels.forEach(panel => {
-                if (panel.id !== targetPanelId) {
-                    panel.classList.remove('active');
-                }
-            });
+            <div class="social-links-container">
+                <a href="#" class="social-link youtube">
+                    <i class="fab fa-youtube"></i>
+                    <div class="social-link-content">
+                        <span class="social-link-title">ערוץ YouTube</span>
+                        <span class="social-link-desc">צפו בהדרכות וחדשות</span>
+                        <span class="social-follower-count">42K עוקבים</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="social-link facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <div class="social-link-content">
+                        <span class="social-link-title">עמוד Facebook</span>
+                        <span class="social-link-desc">הצטרפו לקהילה שלנו</span>
+                        <span class="social-follower-count">18K עוקבים</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="social-link instagram">
+                    <i class="fab fa-instagram"></i>
+                    <div class="social-link-content">
+                        <span class="social-link-title">Instagram</span>
+                        <span class="social-link-desc">חוויות ויזואליות</span>
+                        <span class="social-follower-count">25K עוקבים</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="social-link linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    <div class="social-link-content">
+                        <span class="social-link-title">LinkedIn</span>
+                        <span class="social-link-desc">קשרים עסקיים</span>
+                        <span class="social-follower-count">5.2K עוקבים</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="social-link twitter">
+                    <i class="fab fa-twitter"></i>
+                    <div class="social-link-content">
+                        <span class="social-link-title">Twitter / X</span>
+                        <span class="social-link-desc">עדכונים בזמן אמת</span>
+                        <span class="social-follower-count">8.4K עוקבים</span>
+                    </div>
+                </a>
+            </div>
             
-            // Toggle target panel
-            if (targetPanel) {
-                targetPanel.classList.toggle('active');
-            }
-        });
-    });
+            <div class="contact-info-mini">
+                <div class="contact-item-mini">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@quantum-tech.co.il</span>
+                </div>
+                <div class="contact-item-mini">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>03-1234567</span>
+                </div>
+            </div>
+        </div>
+    `;
     
-    // Close buttons functionality
-    const closeButtons = document.querySelectorAll('.side-panel-close');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const panel = this.closest('.side-panel');
-            if (panel) {
-                panel.classList.remove('active');
-            }
-        });
-    });
+    // הוספת הפאנלים לגוף המסמך
+    document.body.appendChild(leftPanel);
+    document.body.appendChild(rightPanel);
     
-    // Close panels when clicking outside (for mobile)
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.side-panel') && !event.target.closest('[data-panel]')) {
-            sidePanels.forEach(panel => {
-                panel.classList.remove('active');
-            });
-        }
-    });
+    // ודא שהפאנלים גלויים
+    setTimeout(() => {
+        document.querySelectorAll('.side-panel').forEach(panel => {
+            panel.style.visibility = 'visible';
+            panel.style.opacity = '1';
+        });
+    }, 100);
 }
 
 /**
